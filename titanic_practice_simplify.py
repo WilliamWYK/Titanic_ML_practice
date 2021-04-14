@@ -28,7 +28,7 @@ def sample_title(name):
 
 #"""模型整理與訓練階段"""
 
-df = pd.read_csv("/content/drive/MyDrive/Colab Notebooks/train.csv")
+df = pd.read_csv("train.csv")
 df.loc[df['Age']>70,'Age']= df.Age.median()
 df.loc[df['Fare']>300,'Fare']=300
 df['Age'].fillna(df.Age.median(),inplace = True)
@@ -51,7 +51,7 @@ pickle.dump(random_forest,open('titanic_model.model','wb'))
 
 #"""測試模型結果階段"""
 
-testData = pd.read_csv('/content/drive/MyDrive/Colab Notebooks/test.csv')
+testData = pd.read_csv('test.csv')
 testData['Title'] = testData.Name.map(sample_title)
 testData.drop(['Name','Ticket','Cabin'],axis=1,inplace=True)
 testData['Age'].fillna(testData.Age.median(),inplace = True)
